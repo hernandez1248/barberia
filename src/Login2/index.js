@@ -1,6 +1,9 @@
 export default Ejemplo() {
 
   return (
-    <H1>Ejemplo</H1>
+    <div>
+      <H1>Ejemplo</H1>
+      <p>Este es otro cambio</p>
+    </div>
   );
 };
