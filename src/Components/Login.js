@@ -1,41 +1,29 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Avatar from '@material-ui/core/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from '@mui/styles';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
 
 
 const UseStyles = makeStyles(theme =>({
   '@global': {
     borderStyle:{
-      backgroundColor: theme.palette.common.white
+      backgroundColor: "#fff",
     },
   },
   paper: {
-    marginTop: theme.spacing(),
+    marginTop: 8,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    marginTop: theme.spacing(),
-    width: '35%',
-    height: '100px',
-    color: 'black',
-    negrita: {fontWeight: 'bold'},
-  },
   form: {
     width: '100%',
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(2, 0, 2),
-    component: 'h1'
-    
+    marginTop: 8,
   },
 }));
 
@@ -50,15 +38,22 @@ const Login = () => {
       <CssBaseline />
       <div className={classes.paper}>
       <Avatar component="h1" variant="h4" 
-      alignItems= "center" className={classes.avatar} >
+      alignItems= "center" className={classes.avatar}
+      sx={{
+        width: '100px',
+        height: '100px',
+        color: 'black',
+      }} >
         <center> Barbería Salmeron </center>
       </Avatar>
-        <Typography component="h1" variant="h4">
+        <Typography component="h1" variant="h4"
+        sx={{fontWeight: 'bold'}}>
           Iniciar Sesión
         </Typography>
         <form className={classes.form} >
-        <Typography component="h1" variant="h5">
-          Correo Electronico
+        <Typography component="h1" variant="h5"
+        sx={{fontWeight: 'bold'}}>
+          Correo Electrónico
         </Typography>
           <TextField
             variant="outlined"
@@ -71,7 +66,8 @@ const Login = () => {
             autoComplete="email"
             autoFocus
           />
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" 
+          sx={{fontWeight: 'bold'}}>
             Contraseña
         </Typography>
           <TextField
@@ -92,6 +88,9 @@ const Login = () => {
             color="primary"
             className={classes.submit}
             component="h1"
+            sx={{
+              marginTop: 4
+            }}
           >
             Iniciar Sesión
           </Button>
@@ -102,9 +101,11 @@ const Login = () => {
             variant="contained"
             color="primary"
             style={{ background: '#717171' }}
-            className={classes.submit}
+            sx={{
+              marginTop: 2
+            }}
           >
-            Registrate
+            Regístrate
           </Button>
           </Grid>
         </form>
