@@ -4,6 +4,8 @@ import SignUp from './Components/SignUp';
 import Services from './Components/Services';
 import Login from './Components/Login';
 import Reserve from './Components/Reserve';
+import Works from './Components/Admin/index'
+import Location from './Components/location';
 
 const Routes = () =>(
     <Switch>
@@ -11,7 +13,9 @@ const Routes = () =>(
         <Route exact path = "/signup" component={SignUp}/>
         <Route exact path = "/services" component={Services}/>
         <Route exact path= "/login" component= {Login} />
-        <Route exact path= "/reserve" component= {Reserve} />
+        <Route exact path="/location" component={Location}/>
+        <Route exact path="/agregar" component={Works}/>
+          <Route exact path= "/reserve" component= {Reserve} />
     </Switch>
 );
 
