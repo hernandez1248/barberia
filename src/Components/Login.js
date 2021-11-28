@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-
+import Link from '@mui/material/Link';
 
 const UseStyles = makeStyles(theme =>({
   '@global': {
@@ -23,7 +23,6 @@ const UseStyles = makeStyles(theme =>({
   },
   form: {
     width: '100%',
-    marginTop: 8,
   },
 }));
 
@@ -39,47 +38,43 @@ const Login = () => {
       <div className={classes.paper}>
       <Avatar component="h1" variant="h4" 
       alignItems= "center" className={classes.avatar}
+      
       sx={{
-        width: '100px',
-        height: '100px',
+        width: '106px',
+        height: '106px',
         color: 'black',
+        textAlign: 'center'
       }} >
-        <center> Barbería Salmeron </center>
+        Barbería Salmeron
       </Avatar>
         <Typography component="h1" variant="h4"
         sx={{fontWeight: 'bold'}}>
           Iniciar Sesión
         </Typography>
         <form className={classes.form} >
-        <Typography component="h1" variant="h5"
-        sx={{fontWeight: 'bold'}}>
+        <Grid item xs={12} sm={12}>
+          <Typography component="h1" variant="h6"
+            sx={{fontWeight: 'bold',mt: 2}} >
           Correo Electrónico
         </Typography>
           <TextField
-            variant="outlined"
-            margin="normal"
             required
             fullWidth
             id="email"
             placeholder ="name@example.com"
             name="email"
-            autoComplete="email"
-            autoFocus
           />
-          <Typography component="h1" variant="h5" 
-          sx={{fontWeight: 'bold'}}>
+        </Grid> 
+          <Typography component="h1" variant="h6" 
+          sx={{fontWeight: 'bold', mt: 2}}>
             Contraseña
         </Typography>
           <TextField
-            variant="outlined"
-            margin="normal"
             required
             fullWidth
             name="password"
             placeholder = "Password"
-            type="password"
             id="password"
-            autoComplete="current-password"
           />
           <Button
             type="submit"
@@ -93,20 +88,13 @@ const Login = () => {
             }}
           >
             Iniciar Sesión
-          </Button>
-          <Grid container>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            style={{ background: '#717171' }}
-            sx={{
-              marginTop: 2
-            }}
-          >
-            Regístrate
-          </Button>
+          </Button >
+          <Grid container justifyContent="flex-end">
+          <Grid item>
+            <Link href="/signup" variant="body2" sx={{ marginTop: 2 ,display: 'flex' }}>
+              Regístrate  
+            </Link>
+          </Grid>
           </Grid>
         </form>
       </div>

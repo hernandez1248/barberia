@@ -3,16 +3,19 @@ import {Route, Switch} from 'react-router-dom';
 import SignUp from './Components/SignUp';
 import Services from './Components/Services';
 import Login from './Components/Login';
+import Reserve from './Components/Reserve';
 import Works from './Components/Admin/index'
 import Location from './Components/location';
 
 const Routes = () =>(
     <Switch>
+        <Route exact path= "/" component= {Login} />
         <Route exact path = "/signup" component={SignUp}/>
         <Route exact path = "/services" component={Services}/>
         <Route exact path= "/login" component= {Login} />
         <Route exact path="/location" component={Location}/>
         <Route exact path="/agregar" component={Works}/>
+          <Route exact path= "/reserve" component= {Reserve} />
     </Switch>
 );
 
