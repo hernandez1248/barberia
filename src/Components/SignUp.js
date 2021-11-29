@@ -31,23 +31,24 @@ export default function SignUp() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Avatar  sx={{ width: 106, height: 106, m: 1, bgcolor: '', color: 'text.primary' }}>
+          <Avatar component="h1" variant="h4" sx={{ width: 106, height: 106, m: 1, color: 'black', textAlign: 'center' }}>
             Barbería Salmeron
           </Avatar>
-          <Typography component="h1" variant="h5" sx={{ fontWeight: 'bold' }}>
+          <Typography component="h1" variant="h4" sx={{ fontWeight: 'bold' }}>
             Registrate
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
-                <Typography component="h3" variant="h5" >
-                    <Box sx={{ textAlign: 'left', m: 1, fontSize:18, fontWeight: 'bold' }}>Nombre</Box>
+                <Typography component="h1" variant="h6"
+                sx={{fontWeight: 'bold'}} >
+                  Nombre
                 </Typography>
                 <TextField
                   autoComplete="given-name"
@@ -55,31 +56,33 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="name"
-                  label="name"
+                  placeholder ="name"
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12}>
-              <Typography component="h3" variant="h5">
-                    <Box sx={{ textAlign: 'left', m: 1, fontSize:18, fontWeight: 'bold' }}>Correo Electronico</Box>
+              <Typography component="h1" variant="h6"
+                sx={{fontWeight: 'bold'}} >
+                  Correo Electrónico
                 </Typography>
                 <TextField
                   required
                   fullWidth
                   id="email"
-                  label="name@example.com"
+                  placeholder = "name@example.com"
                   name="email"
                 />
               </Grid>
               <Grid item xs={12}>
-              <Typography component="h3" variant="h5">
-                    <Box sx={{ textAlign: 'left', m: 1, fontSize:18, fontWeight: 'bold' }}>Contraseña</Box>
+              <Typography component="h1" variant="h6"
+                sx={{fontWeight: 'bold'}} >
+                  Contraseña
                 </Typography>
                 <TextField
                   required
                   fullWidth
                   name="password"
-                  label="Contraseña"
+                  placeholder ="Contraseña"
                   type="password"
                   id="password"
                 />
@@ -89,13 +92,13 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: 'text.disabled' }}
+              sx={{ mt: 3, mb: 2 }}
             >
               Comenzar
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   ¿Ya tienes una cuenta? Inicia sesión
                 </Link>
               </Grid>

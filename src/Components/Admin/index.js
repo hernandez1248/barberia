@@ -1,42 +1,52 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
+import React from "react";
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 
-import Header from '../Components/Layout/Header';
 
 const theme = createTheme();
 
-export default function Services() {
-
-
-  return (
-    <ThemeProvider theme={theme}>
-        <Header/>
-      <Container component="main" maxWidth="xs">
+const Works = () =>{
+    return(
+        <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'left',
-            textAlign: 'center',
-          }}
-        >
-          <Typography component="h1" variant="h5" sx={{ fontWeight: 'bold', textAlign: 'center', fontSize:30}}>
-            Barbería Salmeron
-          </Typography>
-          
-          <Card component={Grid} container sx={{bgcolor: 'text.disabled', border: 'solid', mt: 2}}>
+        <Box sx={{position: 'relative', border: 1, m:2, p:1}}>
+        <Typography
+                component="h1"
+                variant="h5"
+                align="center"
+                color="text.primary"
+              >
+                Agregar servicio
+              </Typography>
+              
+        </Box>
+            <Button variant="contained" LinkComponent={Link} to="/services/agregar" startIcon={<AddOutlinedIcon />} 
+            sx={{mx:10, width:"50%", minWidth: "25%"}}>
+                Agregar
+            </Button>
+        <main>
+          {/* Hero unit */}
+          <Box
+            sx={{
+              marginTop: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'left',
+              textAlign: 'center',
+              m: 1
+            }}
+          >
+            <Card component={Grid} container sx={{bgcolor: 'text.disabled', border: 'solid', mt: 2}}>
             <Grid item xs={5}>
               <CardMedia
                   component="img"
@@ -61,7 +71,7 @@ export default function Services() {
               </CardActions>
             </Grid>
           </Card>
-          
+
           <Card component={Grid} container sx={{bgcolor: 'text.disabled', border: 'solid', mt: 2}}>
             <Grid item xs={5}>
               <CardMedia
@@ -87,34 +97,10 @@ export default function Services() {
               </CardActions>
             </Grid> 
           </Card>
-
-          <Card component={Grid} container sx={{bgcolor: 'text.disabled', border: 'solid', mt: 2}}>
-            <Grid item xs={5}>
-              <CardMedia
-                  component="img"
-                  height="200"
-                  image="https://i.pinimg.com/originals/70/c4/19/70c419348d29d4d11f5fbdfb1c411ac7.jpg"
-                  alt="Corte"
-              />
-            </Grid>
-            <Grid item xs={7}>
-              <CardContent component={Grid} item>
-                <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 'bold'}}>
-                    Desvanecido
-                </Typography>
-                <Typography variant="body2" variant="h6" component="div" color="text.primary">
-                    Costo: $80
-                </Typography>
-              </CardContent>
-              <CardActions>
-                    <Button size="large" fullWidth variant="contained" sx={{alignItems: 'center'}}>
-                        Más información
-                    </Button>
-              </CardActions>
-            </Grid> 
-          </Card>
-        </Box>
-      </Container>
-    </ThemeProvider>
-  );
+          </Box>
+        </main>
+      </ThemeProvider>
+    );
 }
+
+export default Works;
