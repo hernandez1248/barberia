@@ -11,6 +11,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import MenuListComposition from '../Menu/Menu.js';
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
@@ -32,15 +33,7 @@ export default function MenuAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{bgcolor:"white"}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            bgcolor="text.primary"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <MenuListComposition/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>

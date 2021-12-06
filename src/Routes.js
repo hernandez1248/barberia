@@ -6,7 +6,7 @@ import Login from './Components/Login';
 import Reservation from './Components/Reservation';
 import Reserve from './Components/Reserve';
 import Works from './Components/Admin/index'
-import Location from './Components/location';
+import Location from './Components/Location';
 
 const Routes = () =>(
     <Switch>
