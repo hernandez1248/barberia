@@ -1,29 +1,65 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ref, set } from 'firebase/database';
+import { withRouter } from "react-router-dom";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import Alert from './Alert'
 
+import { database } from "././Config/firebaseConfig";
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+const SignUp = (props) => {
+
+  const auth = getAuth();
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+});
+
+const [alertMessage, setAlertMessage] = useState(null);
+
+  const handleChange = (e) => {
+    setUser({
+        ...user,
+        [e.target.name]: e.target.value,
+    });  
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, user.email, user.password)
+    .then(response => {
+      // guardar los datos del usuario
+       delete user.password;
+       set(ref(database, `users/${response.user.uid}`), user); 
+      //alert('Registro exitoso, Bienvenido a nuestra Barberia..!!');
+      setAlertMessage({
+        type: 'success',
+        message: 'Registro exitoso, Bienvenido a nuestra Barberia..!!'
+      }); 
+      props.history.push('/services');
+    })
+    .catch(error => {
+      console.log(error);
+      //alert(error.message);
+      setAlertMessage({
+        type: 'error',
+        message: error.message
+      });
+    });
+   };
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,27 +79,28 @@ export default function SignUp() {
           <Typography component="h1" variant="h4" sx={{ fontWeight: 'bold' }}>
             Registrate
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12}>
-                <Typography component="h1" variant="h6"
-                sx={{fontWeight: 'bold'}} >
+                <Typography component="h1" variant="h6" sx={{fontWeight: 'bold'}} >
                   Nombre
                 </Typography>
                 <TextField
                   autoComplete="given-name"
                   name="name"
+                  variant="outlined"
                   required
                   fullWidth
                   id="name"
                   placeholder ="name"
+                  value={user.name}
+                  onChange={handleChange}
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12}>
-              <Typography component="h1" variant="h6"
-                sx={{fontWeight: 'bold'}} >
-                  Correo Electrónico
+                <Typography component="h1" variant="h6" sx={{fontWeight: 'bold'}} >
+                    Correo Electrónico
                 </Typography>
                 <TextField
                   required
@@ -71,12 +108,14 @@ export default function SignUp() {
                   id="email"
                   placeholder = "name@example.com"
                   name="email"
+                  autoComplete="email"
+                  value={user.email}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
-              <Typography component="h1" variant="h6"
-                sx={{fontWeight: 'bold'}} >
-                  Contraseña
+                <Typography component="h1" variant="h6"sx={{fontWeight: 'bold'}} >
+                    Contraseña
                 </Typography>
                 <TextField
                   required
@@ -85,6 +124,9 @@ export default function SignUp() {
                   placeholder ="Contraseña"
                   type="password"
                   id="password"
+                  autoComplete="current-password"
+                  value={user.password}
+                  onChange={handleChange}
                 />
               </Grid>
             </Grid>
@@ -105,7 +147,16 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
+        {alertMessage && 
+          <Alert
+            type={alertMessage.type}
+            message={alertMessage.message}
+            autoclose={5000}
+          />
+        }
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default withRouter(SignUp);

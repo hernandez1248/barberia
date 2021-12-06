@@ -6,20 +6,16 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuListComposition from '../Menu/Menu.js';
+import { getAuth, signOut } from "firebase/auth";
+import { withRouter } from "react-router-dom";
 
-export default function MenuAppBar() {
-  const [auth, setAuth] = React.useState(true);
+const MenuAppBar = ({ history, user, onLogout }) => {
+  const auth = getAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  const open =Boolean(anchorEl);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,10 +24,19 @@ export default function MenuAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
+  const handleLogout = () => {
+    setAnchorEl(null);
+
+    signOut(auth).then(() => {
+      if  (onLogout) onLogout();
+      history.push('/');
+    });
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{bgcolor:"white"}}>
+      <AppBar position="fixed" sx={{bgcolor:"white"}}>
         <Toolbar>
           <MenuListComposition/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -65,7 +70,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+                <MenuItem onClick={handleLogout}>Cerrar Sesión</MenuItem>
               </Menu>
             </div>
           )}
@@ -74,3 +79,5 @@ export default function MenuAppBar() {
     </Box>
   );
 }
+
+export default withRouter(MenuAppBar);

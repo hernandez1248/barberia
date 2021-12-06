@@ -10,35 +10,33 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-
+import {Link } from "react-router-dom";
 import Header from '../Components/Layout/Header';
+
 
 const theme = createTheme();
 
 export default function Services() {
 
-
   return (
     <ThemeProvider theme={theme}>
-        <Header/>
-      <Container component="main">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 10,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'left',
-            textAlign: 'center',
-          }}
-          >
+      <CssBaseline />
+      <Box  sx={{display: 'flex', justifyContent: "space-around", m:1, background:"white"}}>
+        <Grid item xs={6} md={7}>
           <Typography component="h1" variant="h5" sx={{ fontWeight: 'bold', textAlign: 'center', fontSize:30}}>
             Barbería Salmeron
           </Typography>
-          
-          <Grid container spacing={3}>
+        </Grid>
+        <Grid item xs={6} md={5}>
+        <Button component={Link} to="/login" size="large"  variant="contained" sx={{fontWeight: 'bold', mt: 2, width:"80%"}}>
+          Iniciar Sesión
+        </Button> 
+        </Grid>
+      </Box>
+      <Container component="main">
+        <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Card component={Grid} container sx={{bgcolor: "silver" , border: 'solid', mt: 2}}>
+            <Card component={Grid} container sx={{bgcolor: 'silver', border: 'solid', mt: 2}}>
                 <Grid item xs={5}>
                 <CardMedia
                     component="img"
@@ -120,7 +118,6 @@ export default function Services() {
           </Card>
           </Grid>
         </Grid>
-        </Box>
       </Container>
     </ThemeProvider>
   );
