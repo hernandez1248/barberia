@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import MenuListComposition from '../Menu/Menu.js';
 import { getAuth, signOut } from "firebase/auth";
 import { withRouter } from "react-router-dom";
 
@@ -37,15 +38,7 @@ const MenuAppBar = ({ history, user, onLogout }) => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{bgcolor:"white"}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            bgcolor="text.primary"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <MenuListComposition/>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
