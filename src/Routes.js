@@ -6,11 +6,12 @@ import Login from './Components/Login';
 import Reservation from './Components/Reservation';
 import Reserve from './Components/Reserve';
 import Works from './Components/Admin/index'
-import Location from './Components/location';
+import Location from './Components/Location';
+import Index from './Components/Index';
 
 const Routes = () =>(
     <Switch>
-        <Route exact path= "/" component= {Login} />
+        <Route exact path= "/" component= {Index} />
         <Route exact path = "/signup" component={SignUp}/>
         <Route exact path = "/services" component={Services}/>
         <Route exact path= "/login" component= {Login} />

@@ -8,6 +8,9 @@ import { makeStyles } from '@mui/styles';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Link from '@mui/material/Link';
+import { withRouter } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
+import Alert from "./Alert"
 
 const UseStyles = makeStyles(theme =>({
   '@global': {
@@ -26,80 +29,112 @@ const UseStyles = makeStyles(theme =>({
   },
 }));
 
-const Login = () => {
- 
+const Login = (props) => {
+  const auth = getAuth();
   const classes = UseStyles();
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  
+  const [errorMessage, setErrorMessage] = useState('');
 
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value
+    });
+   };
 
+   const handleLogin = (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    signInWithEmailAndPassword(auth, user.email, user.password)
+    .then(response => {
+      props.history.push('/services');
+    })
+    .catch(error => {
+      console.log(error);
+      //alert(error.message);
+      setErrorMessage(error.message);
+    });
+   };
 
    return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-      <Avatar component="h1" variant="h4" 
-      alignItems= "center" className={classes.avatar}
-      
-      sx={{
-        width: '106px',
-        height: '106px',
-        color: 'black',
-        textAlign: 'center'
-      }} >
-        Barbería Salmeron
-      </Avatar>
-        <Typography component="h1" variant="h4"
-        sx={{fontWeight: 'bold'}}>
-          Iniciar Sesión
-        </Typography>
-        <form className={classes.form} >
-        <Grid item xs={12} sm={12}>
-          <Typography component="h1" variant="h6"
-            sx={{fontWeight: 'bold',mt: 2}} >
-          Correo Electrónico
-        </Typography>
-          <TextField
-            required
-            fullWidth
-            id="email"
-            placeholder ="name@example.com"
-            name="email"
-          />
-        </Grid> 
-          <Typography component="h1" variant="h6" 
-          sx={{fontWeight: 'bold', mt: 2}}>
-            Contraseña
-        </Typography>
-          <TextField
-            required
-            fullWidth
-            name="password"
-            placeholder = "Password"
-            id="password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            component="h1"
-            sx={{
-              marginTop: 4
-            }}
-          >
+        <Avatar component="h1" variant="h4" 
+          alignItems= "center" className={classes.avatar}
+          
+          sx={{
+            width: '106px',
+            height: '106px',
+            color: 'black',
+            textAlign: 'center'
+          }} >
+            Barbería Salmeron
+        </Avatar>
+          <Typography component="h1" variant="h4"sx={{fontWeight: 'bold'}}>
             Iniciar Sesión
-          </Button >
-          <Grid container justifyContent="flex-end">
-          <Grid item>
-            <Link href="/signup" variant="body2" sx={{ marginTop: 2 ,display: 'flex' }}>
-              Regístrate  
-            </Link>
-          </Grid>
-          </Grid>
-        </form>
+          </Typography>
+          <form className={classes.form} >         
+              <Typography component="h1" variant="h6" sx={{fontWeight: 'bold',mt: 2}} >
+                Correo Electrónico
+              </Typography>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                autoComplete="email"
+                placeholder ="name@example.com"
+                name="email"
+                defaultValue={user.email}
+                onChange={handleChange}
+              />
+            
+              <Typography component="h1" variant="h6" sx={{fontWeight: 'bold', mt: 2}}>
+                Contraseña
+             </Typography>
+              <TextField
+                required
+                fullWidth
+                name="password"
+                placeholder = "Password"
+                type="password"
+                id="password"
+                autoComplete="current.password"
+                defaultValue={user.password}
+                onChange={handleChange}
+              />
+              <Button 
+                type="button"
+                onClick={handleLogin}
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                component="h1"
+                sx={{
+                  marginTop: 4
+                }}
+              >
+                Iniciar Sesión
+              </Button >
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="/signup" variant="body2" sx={{ marginTop: 2 ,display: 'flex' }}>
+                    Regístrate  
+                  </Link>
+                </Grid>
+              </Grid>
+          </form>
       </div>
+      {errorMessage &&
+        <Alert type="error" message={errorMessage} autoclose={5000} />
+      }
     </Container>
   );
 };
-export default Login;
-
+export default withRouter(Login);
