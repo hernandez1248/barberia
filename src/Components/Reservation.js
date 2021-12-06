@@ -58,7 +58,7 @@ export default function Reservation() {
             
           }}
         >
-          <Card sx={{ maxWidth: 400, textAlign: 'center' }}>
+          <Card sx={{ maxWidth: 400, textAlign: 'center', border: 'solid'}}>
       <CardActionArea>
         <CardContent>
         <Typography component="h1" variant="h5" sx={{ fontWeight: 'bold', textAlign: 'center', m: 1, fontSize:30}}>

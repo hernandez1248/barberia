@@ -49,7 +49,7 @@ export default function Reserver() {
             Reservar ahora
           </Typography>
 
-          <Card component={Grid} container sx={{bgcolor: 'text.disabled', border: 'solid'}}>
+          <Card component={Grid} container sx={{bgcolor: 'silver', border: 'solid'}}>
             <Grid item xs={5}>
               <CardMedia
                   component="img"
