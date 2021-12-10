@@ -47,7 +47,7 @@ export default function Services() {
                 </Grid>
                 <Grid item xs={7}>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 'bold', }}>
+                    <Typography gutterBottom variant="h5" component="div" sx={{fontWeight: 'bold'}}>
                     Casquete Corto
                     </Typography>
                     <Typography variant="body2" variant="h6" component="div" color="text.primary">

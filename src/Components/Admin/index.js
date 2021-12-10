@@ -5,7 +5,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { onValue, ref, remove } from 'firebase/database';
-import {database} from '../../config/firebaseConfig'
+import {database} from '.././Config/firebaseConfig'
 import ServicesCard from './ServicesCard'
 
 const Works = () =>{
@@ -59,7 +59,7 @@ const Works = () =>{
         >
             <Grid container spacing={3}>
                 <Grid item xs={7} md={10}>
-                    <h3 sx={{ m: 0}}>Mis Servicios</h3>
+                    <h2 sx={{ m: 0}}>Mis Servicios</h2>
                 </Grid>
                 <Grid item xs={5} md={2}> 
                     <Button variant="contained" LinkComponent={Link} to="/admin/agregar" startIcon={<AddOutlinedIcon />}>
