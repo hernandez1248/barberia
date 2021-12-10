@@ -12,16 +12,18 @@ import {Link} from 'react-router-dom';
 
 export default function servicesCard({service, onDelete}) {
   return (
-    <Grid item xs={12} md={4} sx={{ marginTop: 2,
+    <Grid item xs={12} md={4} 
+      sx={{ 
+      marginTop: 2,
       flexDirection: 'column',
       alignItems: 'left',
       textAlign: 'center',
       }}>
-    <Card component={Grid} container sx={{bgcolor: 'silver'}}>
+    <Card component={Grid} container sx={{bgcolor: '#D5DBDB'}}>
     <Grid item xs={5}>
       <CardMedia
           component="img"
-          height="200"
+          height="230"
           image={service.image}
           alt={service.nombre}
       />
