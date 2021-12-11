@@ -9,8 +9,6 @@ import {database} from '.././Config/firebaseConfig';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ServicesCard from './ServicesCard'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Container from '@mui/material/Container';
-
 
 const theme = createTheme();
 
@@ -62,6 +60,7 @@ const Works = () =>{
                 sx={{
                     p:3,
 
+
                 }}
             >
                 <Grid container spacing={3} sx={{ justifyContent: "space-around", display:'flex'}}>
@@ -84,6 +83,8 @@ const Works = () =>{
                     </Grid>
             </Paper>
         </ThemeProvider>
+            }}
+        >
     );
 }
 

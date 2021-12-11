@@ -14,17 +14,17 @@ function Location() {
     <div className="container-fluid">
         <ThemeProvider theme={theme}>
           <Header sx={{display: 'static'}}/>
-          <Container component="main" maxWidth="xs">
+          <Container component="main">
               <CssBaseline />
               <Box sx={{m: 2, display: 'flex'}}>
-                <Typography variant="h1" variant="h5" sx={{mt:1, p: 1, size: 20, ml: 5, width: '100%'}}>
+                <Typography variant="h1" variant="h5" sx={{mt:6, p: 1, size: 20, ml: 10, width: '100%', fontWeight: 'bold'}}>
                     Encuéntranos aquí
                 </Typography>
               </Box>
               <Grid item xs={12} md={12}>
                 <Mapquest 
                   sx={{flexGrow: 1}}
-                  height= "70vh"
+                  height= "79vh"
                   width= "100%"
                   tileLayer={'map'}
                   zoom={30}

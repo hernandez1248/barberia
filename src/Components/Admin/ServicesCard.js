@@ -12,7 +12,9 @@ import {Link} from 'react-router-dom';
 
 export default function servicesCard({service, onDelete}) {
   return (
-    <Grid item xs={12} md={4} sx={{ marginTop: 2,
+    <Grid item xs={12} md={4} 
+      sx={{ 
+      marginTop: 2,
       flexDirection: 'column',
       alignItems: 'left',
       textAlign: 'center',

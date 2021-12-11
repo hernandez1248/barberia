@@ -97,10 +97,10 @@ const ServicesForm = (props) =>{
     }, [location]);
 
     return(
-    <Paper sx={{p:3,}}> 
+    <Paper sx={{p:3}}> 
         <Grid container spacing={3}>
           <Grid item xs={7} md={11}>
-              <h3 sx={{ m: 0}}>Barberia Salmeron</h3>
+              <h2 sx={{ m: 0}}>Barberia Salmeron</h2>
           </Grid>
           <Grid item xs={5} md={1}> 
               <Button variant="contained" LinkComponent={Link} to="/admin" >
@@ -174,11 +174,11 @@ const ServicesForm = (props) =>{
                {service.image && (
                    <Grid item xs={12} sx={{m:5, textAlign:'center'}}>
                        <img src={service.image}
-                       style={{height: '120px', width:'auto',
+                       style={{height: '150px', width:'auto',
                        fitObject: 'center'}}/>
                     </Grid>
                )}
-               <Grid item xs={12} md={12} sx={{m: 5, textAlign:'center'}}>
+               <Grid item xs={12} md={12} sx={{m: 2, textAlign:'center'}}>
                <Button 
                    type="submit"
                    variant="contained" 
