@@ -69,25 +69,25 @@ export default function Reservation() {
                 Fecha:
                 </Typography>
                 <Typography variant="body2" color="text.primary" sx= {{textAlign: 'center'}}>
-                    19 - 12 - 21
+                    
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div" color= "blue" sx= {{textAlign: 'center'}}>
                 Hora:
                 </Typography>
                 <Typography variant="body2" color="text.primary" sx= {{textAlign: 'center'}}>
-                    10:30
+                    
                 </Typography>
                 <Typography gutterBottom variant="h5" color= "blue" component="div" sx= {{textAlign: 'center'}}>
                 Servicio:
                 </Typography>
                 <Typography variant="body2" color="text.primary" sx= {{textAlign: 'center'}}>
-                    Casquete Corto
+                   
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div" color= "blue" sx= {{textAlign: 'center'}}>
                 Total a pagar:
                 </Typography>
                 <Typography variant="body2" color="text.primary" sx= {{textAlign: 'center'}}>
-                    $200
+                    
                 </Typography>
             </CardContent>
         </CardContent>
