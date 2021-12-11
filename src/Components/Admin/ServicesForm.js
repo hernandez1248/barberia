@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom';
 import { withRouter, useLocation } from 'react-router-dom';
 import {ref, push, update} from 'firebase/database';
 import {ref as stRef, uploadBytes, getDownloadURL} from 'firebase/storage'
-import {database, storage} from '../../config/firebaseConfig';
+import {database, storage} from '.././Config/firebaseConfig';
 
 const ServicesForm = (props) =>{
     const location = useLocation();

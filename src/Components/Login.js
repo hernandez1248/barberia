@@ -53,6 +53,9 @@ const Login = (props) => {
     signInWithEmailAndPassword(auth, user.email, user.password)
     .then(response => {
       props.history.push('/services');
+      if(user.email == "alexis@gmail.com" || user.email == "danielV@gmail.com" || user.email == "hernandez12@gmail.com"){
+        props.history.push('/admin');
+      }
     })
     .catch(error => {
       console.log(error);
